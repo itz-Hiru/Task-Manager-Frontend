@@ -7,3 +7,15 @@ export const validatePassword = (password) => {
   const pattern = /^.{8,}$/;
   return pattern.test(password);
 };
+
+export const addThousandsSeparator = (num) => {
+  const number = Number(num);
+  if (num == null || isNaN(number)) return "";
+
+  const [integerPart, fractionalPart] = number.toString().split(".");
+  const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  return fractionalPart
+    ? `${formattedInteger}.${fractionalPart}`
+    : formattedInteger;
+};

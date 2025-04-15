@@ -43,10 +43,9 @@ const SideMenu = ({ activeMenu }) => {
           <div className="flex justify-center items-center">
             <div className="flex justify-center items-center w-27 h-27 rounded-full border-primary border-1">
               <img
-                src={user?.profileImageUrl || ""}
+                src={user?.profileImageUrl || null}
                 alt="Profile Image"
                 className="w-25 h-25 rounded-full object-cover transition-transform duration-300 ease-in-out"
-                loading="lazy"
                 decoding="async"
               />
             </div>
