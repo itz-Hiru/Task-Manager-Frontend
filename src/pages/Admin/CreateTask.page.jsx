@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import DashboardLayout from '../../components/Layouts/DashboardLayout.component';
+import { UserContext } from '../../context/userContext.context';
+import { useUserAuth } from '../../hooks/useUserAuth.hook';
 
 const CreateTask = () => {
-  return (
-    <div>CreateTask</div>
-  )
-}
+  useUserAuth();
 
-export default CreateTask
+  const { user } = useContext(UserContext);
+  return (
+    <DashboardLayout activeMenu="Create Task">
+
+    </DashboardLayout>
+  );
+};
+
+export default CreateTask;
