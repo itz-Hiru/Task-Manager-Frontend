@@ -21,6 +21,7 @@ import ViewTaskDetails from "./pages/User/ViewTaskDetails.page";
 
 import UserProvider, { UserContext } from "./context/userContext.context";
 import PrivateRoute from "./routes/PrivateRoute.route";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
@@ -55,6 +56,14 @@ const App = () => {
           </Routes>
         </Router>
       </div>
+      <Toaster
+        toastOptions={{
+          className: "",
+          style: {
+            fontSize: "13px",
+          },
+        }}
+      />
     </UserProvider>
   );
 };
