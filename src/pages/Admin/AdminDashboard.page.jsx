@@ -1,14 +1,15 @@
 import moment from "moment";
 import React, { useContext, useEffect, useState } from "react";
+import { LuArrowRight } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
-import { IoMdCard } from "react-icons/io"
+import InfoCard from "../../components/Cards/InfoCard.component";
 import DashboardLayout from "../../components/Layouts/DashboardLayout.component";
+import TaskListTable from "../../components/Tables/TaskListTable.component";
 import { UserContext } from "../../context/userContext.context";
 import { useUserAuth } from "../../hooks/useUserAuth.hook";
 import { API_PATHS } from "../../utils/apiPath.util";
 import axiosInstance from "../../utils/axiosInstance.util";
 import { addThousandsSeparator } from "../../utils/helper.util";
-import InfoCard from "../../components/Cards/InfoCard.component";
 
 const AdminDashboard = () => {
   useUserAuth();
@@ -39,7 +40,11 @@ const AdminDashboard = () => {
     if (hour < 12) return "Good morning";
     if (hour < 18) return "Good afternoon";
     if (hour < 20) return "Good evening";
-    return "Good night"
+    return "Good night";
+  };
+
+  const onSeeMore = () => {
+    navigate("/admin/manage/tasks");
   };
 
   useEffect(() => {
@@ -53,7 +58,7 @@ const AdminDashboard = () => {
         <div className="">
           <div className="col-span-3">
             <h2 className="text-xl font-medium">
-              {greeting}! <span className="mr-1">{user?.name}</span> 
+              {greeting}! <span className="mr-1">{user?.name}</span>
             </h2>
             <p className="text-xs md:text-[13px] text-gray-400 mt-1.5">
               {moment().format("dddd Do MMM YYYY")}
@@ -61,6 +66,7 @@ const AdminDashboard = () => {
           </div>
         </div>
 
+        {/* Information Cards*/}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mt-5">
           <InfoCard
             label=" Total Tasks"
@@ -90,6 +96,21 @@ const AdminDashboard = () => {
             )}
             color="bg-lime-500"
           />
+        </div>
+      </div>
+
+      {/* Recent tasks */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-4 md:my-6">
+        <div className="md:col-span-2">
+          <div className="card">
+            <div className="flex items-center justify-between">
+              <h5 className="text-lg">Recent Tasks</h5>
+              <button className="card-btn" onClick={onSeeMore}>
+                See All <LuArrowRight className="text-base" />
+              </button>
+            </div>
+            <TaskListTable tableData={dashboardData?.recentTasks || []} />
+          </div>
         </div>
       </div>
     </DashboardLayout>
