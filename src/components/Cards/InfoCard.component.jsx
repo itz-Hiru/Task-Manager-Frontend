@@ -1,6 +1,6 @@
 import React from "react";
 
-const InfoCard = ({ icon, label, value, color }) => {
+const InfoCard = ({ label, value, color }) => {
   return (
     <div className="flex items-center gap-3">
       <div className={`w-1 md:w-1 h-3 md:h-5 ${color} rounded-full`} />

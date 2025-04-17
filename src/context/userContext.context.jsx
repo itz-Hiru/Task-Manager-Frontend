@@ -1,6 +1,6 @@
-import React, { createContext, useState, useEffect } from "react";
-import axiosInstance from "../utils/axiosInstance.util";
+import React, { createContext, useEffect, useState } from "react";
 import { API_PATHS } from "../utils/apiPath.util";
+import axiosInstance from "../utils/axiosInstance.util";
 
 export const UserContext = createContext();
 

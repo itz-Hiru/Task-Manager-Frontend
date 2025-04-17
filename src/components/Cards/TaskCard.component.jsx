@@ -1,8 +1,8 @@
-import React from "react";
 import moment from "moment";
+import React from "react";
 import { LuPaperclip } from "react-icons/lu";
-import Progress from "../Layouts/Progress.component";
 import AvatarGroup from "../Cards/AvatarGroup.component";
+import Progress from "../Layouts/Progress.component";
 
 const TaskCard = ({
   title,
@@ -65,7 +65,7 @@ const TaskCard = ({
           status === "In Progress"
             ? "border-cyan-500"
             : status === "Completed"
-            ? "border-indigo-500"
+            ? "border-green-500"
             : "border-violet-500"
         }`}
       >
@@ -91,8 +91,12 @@ const TaskCard = ({
               {moment(createdAt).format("Do MMM YYYY")}
             </p>
           </div>
-          <label className="text-xs text-gray-500">End Date</label>
-          <p className="text-[13px] font-medium text-gray-900">{moment(dueDate).format("Do MMM YYYY")}</p>
+          <div>
+            <label className="text-xs text-gray-500">End Date</label>
+            <p className="text-[13px] font-medium text-gray-900">
+              {moment(dueDate).format("Do MMM YYYY")}
+            </p>
+          </div>
         </div>
       </div>
       <div className="flex items-center justify-between mt-3">

@@ -33,7 +33,7 @@ const AdminDashboard = () => {
 
     const taskDistributionData = [
       { status: "Pending", count: taskDistribution?.Pending || 0 },
-      { status: "In Progress", count: taskDistribution?.Inprogress || 0 },
+      { status: "In Progress", count: taskDistribution?.InProgress || 0 },
       { status: "Completed", count: taskDistribution?.Completed || 0 },
     ];
 
@@ -112,7 +112,7 @@ const AdminDashboard = () => {
           <InfoCard
             label=" In Progress Tasks"
             value={addThousandsSeparator(
-              dashboardData?.charts?.taskDistribution?.Inprogress || 0
+              dashboardData?.charts?.taskDistribution?.InProgress || 0
             )}
             color="bg-cyan-500"
           />

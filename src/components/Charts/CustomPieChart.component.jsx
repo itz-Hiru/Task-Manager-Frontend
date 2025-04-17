@@ -1,11 +1,11 @@
 import React from "react";
 import {
-    Cell,
-    Legend,
-    Pie,
-    PieChart,
-    ResponsiveContainer,
-    Tooltip,
+  Cell,
+  Legend,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
 } from "recharts";
 import CustomLegend from "./CustomLegen.component";
 import CustomTooltip from "./CustomTooltip.component";

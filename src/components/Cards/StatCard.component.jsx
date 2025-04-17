@@ -14,12 +14,12 @@ const StatCard = ({ label, count, status }) => {
     }
   };
   return (
-    <div className={`flex-1 text-[10px] font-medium ${getStatusTagColor()} px-4 py-0.5 rounded`}>
-        <span className="text-[12px] font-semibold">
-            {count}
-        </span>
-        <br />
-        {label}
+    <div
+      className={`flex-1 text-[10px] font-medium ${getStatusTagColor()} px-4 py-0.5 rounded`}
+    >
+      <span className="text-[12px] font-semibold">{count}</span>
+      <br />
+      {label}
     </div>
   );
 };

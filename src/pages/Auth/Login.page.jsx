@@ -2,10 +2,10 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/Inputs/Input.component";
 import AuthLayout from "../../components/Layouts/AuthLayout.component";
-import { validateEmail } from "../../utils/helper.util";
-import axiosInstance from "../../utils/axiosInstance.util";
-import { API_PATHS } from "../../utils/apiPath.util";
 import { UserContext } from "../../context/userContext.context";
+import { API_PATHS } from "../../utils/apiPath.util";
+import axiosInstance from "../../utils/axiosInstance.util";
+import { validateEmail } from "../../utils/helper.util";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -33,7 +33,8 @@ const Login = () => {
     // Login API call
     try {
       const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
-        email, password,
+        email,
+        password,
       });
 
       const { token, role } = response.data;

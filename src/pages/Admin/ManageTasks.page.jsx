@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LuFileSpreadsheet } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
+import TaskCard from "../../components/Cards/TaskCard.component";
 import DashboardLayout from "../../components/Layouts/DashboardLayout.component";
 import TaskStatusTabs from "../../components/Tabs/TaskStatusTabs.component";
 import { useUserAuth } from "../../hooks/useUserAuth.hook";
 import { API_PATHS } from "../../utils/apiPath.util";
 import axiosInstance from "../../utils/axiosInstance.util";
-import TaskCard from "../../components/Cards/TaskCard.component";
 
 const ManageTasks = () => {
   useUserAuth();

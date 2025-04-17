@@ -19,9 +19,9 @@ import Dashboard from "./pages/User/Dashboard.page";
 import MyTasks from "./pages/User/MyTasks.page";
 import ViewTaskDetails from "./pages/User/ViewTaskDetails.page";
 
+import { Toaster } from "react-hot-toast";
 import UserProvider, { UserContext } from "./context/userContext.context";
 import PrivateRoute from "./routes/PrivateRoute.route";
-import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (

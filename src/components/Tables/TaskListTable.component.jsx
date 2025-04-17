@@ -3,15 +3,16 @@ import React from "react";
 
 const TaskListTable = ({ tableData }) => {
   const getStatusBadgeColor = (status) => {
-    switch (status) {
-      case "Completed":
-        return "bg-green-100 text-green-500 border border-green-200";
-      case "Pending":
-        return "bg-purple-100 text-purple-500 border border-purple-200";
-      case "In Progress":
-        return "bg-cyan-100 text-cyan-500 border border-cyan-200";
+    const normalized = status?.trim().toLowerCase();
+    switch (normalized) {
+      case "in progress":
+        return "text-cyan-500 bg-cyan-100 border border-cyan-200";
+      case "completed":
+        return "text-green-500 bg-green-100 border border-lime-200";
+      case "pending":
+        return "text-purple-500 bg-purple-100 border border-violet-200";
       default:
-        return "bg-gray-100 text-gray-500 border border-gray-200";
+        return "text-gray-500 bg-gray-100 border border-gray-200";
     }
   };
 

@@ -4,17 +4,17 @@ import { toast } from "react-hot-toast";
 import { LuTrash2 } from "react-icons/lu";
 import { useLocation, useNavigate } from "react-router-dom";
 import AddAttachments from "../../components/Inputs/AddAttachments.component";
+import Modal from "../../components/Inputs/Modal.component";
 import SelectDropdown from "../../components/Inputs/SelectDropdown.component";
 import SelectUsers from "../../components/Inputs/SelectUsers.component";
 import TodoListInput from "../../components/Inputs/TodoListInput.component";
 import DashboardLayout from "../../components/Layouts/DashboardLayout.component";
+import DeleteAlert from "../../components/Layouts/DeleteAlert.component";
 import { UserContext } from "../../context/userContext.context";
 import { useUserAuth } from "../../hooks/useUserAuth.hook";
 import { API_PATHS } from "../../utils/apiPath.util";
 import axiosInstance from "../../utils/axiosInstance.util";
 import { PRIORITY_DATA } from "../../utils/data.util";
-import Modal from "../../components/Inputs/Modal.component";
-import DeleteAlert from "../../components/Layouts/DeleteAlert.component";
 
 const CreateTask = () => {
   useUserAuth();
