@@ -36,7 +36,7 @@ const TaskCard = ({
       case "Low":
         return "text-emerald-500 bg-emerald-50 border border-emerald-500/10";
       case "Medium":
-        return "text-amber-500 bg-50 border border-amber-500/10";
+        return "text-amber-500 bg-amber-50 border border-amber-500/10";
       case "High":
         return "text-rose-500 bg-rose-50 border border-rose-500/10";
       default:

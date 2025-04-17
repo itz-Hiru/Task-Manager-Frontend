@@ -46,7 +46,7 @@ const SideMenu = ({ activeMenu }) => {
               {user?.profileImageUrl ? (
                 <img
                   src={user?.profileImageUrl}
-                  alt={userInfo?.name}
+                  alt={user?.name}
                   className="w-25 h-25 rounded-full object-cover transition-transform duration-300 ease-in-out"
                 />
               ) : (
