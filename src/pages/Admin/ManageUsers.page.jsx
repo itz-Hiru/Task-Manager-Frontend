@@ -1,17 +1,70 @@
-import React, { useContext } from 'react';
-import DashboardLayout from '../../components/Layouts/DashboardLayout.component';
-import { UserContext } from '../../context/userContext.context';
-import { useUserAuth } from '../../hooks/useUserAuth.hook';
+import React, { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
+import { LuFileSpreadsheet } from "react-icons/lu";
+import UserCard from "../../components/Cards/UserCard.component";
+import DashboardLayout from "../../components/Layouts/DashboardLayout.component";
+import { API_PATHS } from "../../utils/apiPath.util";
+import axiosInstance from "../../utils/axiosInstance.util";
 
 const ManageUsers = () => {
-  useUserAuth();
-  
-    const { user } = useContext(UserContext);
+  const [allUsers, setAllUsers] = useState([]);
+
+  const getAllUsers = async () => {
+    try {
+      const response = await axiosInstance.get(API_PATHS.USERS.GET_ALL_USERS);
+      if (response.data?.length > 0) {
+        setAllUsers(response.data);
+      }
+    } catch (e) {
+      console.error("Error fetching users", e);
+    }
+  };
+
+  const handleDownloadReport = async () => {
+    try {
+      const response = await axiosInstance.get(API_PATHS.REPORTS.EXPORT_USERS, {
+        responseType: "blob",
+      });
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "user_details.xlsx");
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+      window.URL.revokeObjectURL(url);
+      toast.success("Excel sheet downloaded successfully.");
+    } catch (e) {
+      console.error("Error while downloading report", e);
+      toast.error("Failed to download excel sheet.");
+    }
+  };
+
+  useEffect(() => {
+    getAllUsers();
+    return () => {};
+  }, []);
   return (
     <DashboardLayout activeMenu="Team Members">
-
+      <div className="mt-5 mb-10">
+        <div className="flex md:flex-row md:items-center justify-between">
+          <h2 className="text-xl md:text-xl font-medium">Team Members</h2>
+          <button
+            className="flex md:flex download-btn"
+            onClick={handleDownloadReport}
+          >
+            <LuFileSpreadsheet className="text-lg" />
+            Download Report
+          </button>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+          {allUsers?.map((user) => (
+            <UserCard key={user._id} userInfo={user} />
+          ))}
+        </div>
+      </div>
     </DashboardLayout>
-  )
-}
+  );
+};
 
-export default ManageUsers
+export default ManageUsers;
