@@ -54,7 +54,7 @@ const Signup = () => {
         email,
         password,
         profileImageUrl,
-        adminToken,
+        adminInviteToken: adminToken,
       });
 
       const { token, role } = response.data;
