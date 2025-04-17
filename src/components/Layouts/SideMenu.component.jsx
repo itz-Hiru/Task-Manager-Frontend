@@ -5,6 +5,7 @@ import {
   ADMIN_SIDE_MENU_DATA,
   USER_SIDE_MENU_DATA,
 } from "../../utils/data.util";
+import CharAvatar from "../Cards/CharAvatar.component";
 
 const SideMenu = ({ activeMenu }) => {
   const { user, clearUser } = useContext(UserContext);
@@ -42,12 +43,20 @@ const SideMenu = ({ activeMenu }) => {
         <div className="flex flex-col items-center justify-center mb-7 pt-5">
           <div className="flex justify-center items-center">
             <div className="flex justify-center items-center w-27 h-27 rounded-full border-primary border-1">
-              <img
-                src={user?.profileImageUrl || null}
-                alt="Profile Image"
-                className="w-25 h-25 rounded-full object-cover transition-transform duration-300 ease-in-out"
-                decoding="async"
-              />
+              {user?.profileImageUrl ? (
+                <img
+                  src={user?.profileImageUrl}
+                  alt={userInfo?.name}
+                  className="w-25 h-25 rounded-full object-cover transition-transform duration-300 ease-in-out"
+                />
+              ) : (
+                <CharAvatar
+                  fullName={user?.name}
+                  width="w-25"
+                  height="h-25"
+                  style="text-xl"
+                />
+              )}
             </div>
           </div>
 
